@@ -28,6 +28,7 @@
 **Regular Reviews**: Schedule weekly review sessions with your team to assess progress against the success criteria and make necessary adjustments.
 
 ## Database Schema
+https://lucid.app/lucidchart/6a8927f0-9def-4669-8ef6-04d7b89cd410/edit?viewport_loc=-3818%2C-952%2C2304%2C1141%2C0_0&invitationId=inv_3033fb89-fa04-49d7-851d-4a22be578a02
 
 ### User Management
 
