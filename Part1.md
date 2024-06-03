@@ -119,3 +119,37 @@ https://lucid.app/lucidchart/6a8927f0-9def-4669-8ef6-04d7b89cd410/edit?viewport_
 ### Admin Permissions
 
 **Special Consideration**: Users with the role of 'Admin' have additional permissions not available to regular users, such as managing user accounts or deleting reviews. This distinction is made using the UserRole table.
+
+## SQL Queries and Indexes
+
+```sql
+SELECT Movies.title, Users.username, Rating.rating, Review.review_text 
+FROM Movies
+JOIN Rating ON Movies.id = Rating.movie_id
+JOIN Review ON Movies.id = Review.movie_id
+JOIN Users ON Rating.user_id = Users.user_id;
+
+SELECT title 
+FROM Movies
+WHERE id = (SELECT movie_id 
+            FROM Rating 
+            ORDER BY rating DESC 
+            LIMIT 1);
+
+SELECT Movies.title, AVG(Rating.rating) AS average_rating 
+FROM Movies
+JOIN Rating ON Movies.id = Rating.movie_id 
+GROUP BY Movies.title;
+
+SELECT id, title 
+FROM Movies 
+WHERE release_year > 2000
+UNION
+SELECT m.id, m.title 
+FROM Movies m
+JOIN MovieGenre mg ON m.id = mg.movie_id 
+WHERE mg.genre_id = 1;
+
+CREATE INDEX idx_user_id ON Rating(user_id);
+CREATE INDEX idx_movie_id ON Rating(movie_id);
+```
